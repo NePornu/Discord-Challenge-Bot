@@ -1,3 +1,6 @@
+Tady je kompletní **README** soubor v markdown formátu s jednotným kódem:
+
+```markdown
 # Discord Challenge Bot
 
 ---
@@ -29,68 +32,94 @@ A Discord bot designed to help track and evaluate user activity in a specific ch
 2. **Install the required packages:**
    ```bash
    pip install discord.py python-dotenv
-Create a .env file to store your bot token:
+   ```
 
-ini
-Zkopírovat
-Upravit
-DISCORD_BOT_TOKEN=your_token_here
-Run the bot:
+3. **Create a `.env` file to store your bot token:**
+   ```ini
+   DISCORD_BOT_TOKEN=your_token_here
+   ```
 
-bash
-Zkopírovat
-Upravit
-python bot.py
-Invite the bot to your Discord server and give it the necessary permissions:
+4. **Run the bot:**
+   ```bash
+   python bot.py
+   ```
 
-Manage Roles
-Read Message History
-Send Messages
-Commands
-*vyhodnotit_vyzvu #channel_name: Evaluates user activity in the specified channel and assigns roles based on activity.
-Troubleshooting
-Error: 403 Forbidden (Missing Permissions): Make sure the bot has the "Manage Roles" permission and that the bot's role is above the roles it needs to assign.
-Error: 50013: Check if the bot has the necessary permissions on your server.
-🇨🇿 Česká Verze
-Discord Challenge Bot
+5. **Invite the bot to your Discord server** and give it the necessary permissions:
+   - Manage Roles
+   - Read Message History
+   - Send Messages
+
+---
+
+### **Commands**
+
+- `*vyhodnotit_vyzvu #channel_name`: Evaluates user activity in the specified channel and assigns roles based on activity.
+
+---
+
+### **Troubleshooting**
+
+- **Error: 403 Forbidden (Missing Permissions)**: Make sure the bot has the "Manage Roles" permission and that the bot's role is above the roles it needs to assign.
+- **Error: 50013**: Check if the bot has the necessary permissions on your server.
+
+---
+
+## 🇨🇿 Česká Verze
+
+### **Discord Challenge Bot**
+
 Discord bot, který slouží k sledování a vyhodnocování aktivity uživatelů v určitém kanále a odměňuje ty, kteří splní výzvu po určitý počet dní.
 
-Funkce
-Sleduje aktivitu uživatelů v kanále.
-Počítá aktivní dny pro každého uživatele.
-Přiděluje role za splnění výzvy:
-15 aktivních dní: 𐌋𐌄𐌃𐌍𐌀𐌂𐌄𐌊 ᘖ0ᘖ5
-30 aktivních dní: 𐌍𐌄𐌋𐌄𐌃𐌍𐌀𐌂𐌄𐌊 ᘖ0ᘖ5
-Zobrazuje přehled aktivity uživatelů.
-Zvládá zpracovat velké množství zpráv a výstupu.
-Nastavení
-Naklonujte repozitář nebo stáhněte kód bota.
+---
 
-Nainstalujte požadované balíčky:
+### **Funkce**
 
-bash
-Zkopírovat
-Upravit
-pip install discord.py python-dotenv
-Vytvořte soubor .env pro uložení tokenu bota:
+- **Sleduje aktivitu uživatelů** v kanále.
+- **Počítá aktivní dny** pro každého uživatele.
+- **Přiděluje role** za splnění výzvy:
+  - 15 aktivních dní: `𐌋𐌄𐌃𐌍𐌀𐌂𐌄𐌊 ᘖ0ᘖ5`
+  - 30 aktivních dní: `𐌍𐌄𐌋𐌄𐌃𐌍𐌀𐌂𐌄𐌊 ᘖ0ᘖ5`
+- **Zobrazuje přehled** aktivity uživatelů.
+- Zvládá zpracovat velké množství zpráv a výstupu.
 
-ini
-Zkopírovat
-Upravit
-DISCORD_BOT_TOKEN=váš_token_zde
-Spusťte bota:
+---
 
-bash
-Zkopírovat
-Upravit
-python bot.py
-Pozvěte bota na váš Discord server a dejte mu potřebná oprávnění:
+### **Nastavení**
 
-Spravovat role
-Číst historii zpráv
-Posílat zprávy
-Příkazy
-*vyhodnotit_vyzvu #nazev-kanalu: Vyhodnotí aktivitu uživatelů v zadaném kanálu a přidělí role podle aktivity.
-Řešení problémů
-Chyba: 403 Forbidden (Missing Permissions): Ujistěte se, že bot má oprávnění „Spravovat role“ a že jeho role je nad rolemi, které potřebuje přidělit.
-Chyba: 50013: Zkontrolujte, zda má bot na serveru potřebná oprávnění.
+1. **Naklonujte repozitář nebo stáhněte kód bota.**
+
+2. **Nainstalujte požadované balíčky:**
+   ```bash
+   pip install discord.py python-dotenv
+   ```
+
+3. **Vytvořte soubor `.env` pro uložení tokenu bota:**
+   ```ini
+   DISCORD_BOT_TOKEN=váš_token_zde
+   ```
+
+4. **Spusťte bota:**
+   ```bash
+   python bot.py
+   ```
+
+5. **Pozvěte bota na váš Discord server** a dejte mu potřebná oprávnění:
+   - Spravovat role
+   - Číst historii zpráv
+   - Posílat zprávy
+
+---
+
+### **Příkazy**
+
+- `*vyhodnotit_vyzvu #nazev-kanalu`: Vyhodnotí aktivitu uživatelů v zadaném kanálu a přidělí role podle aktivity.
+
+---
+
+### **Řešení problémů**
+
+- **Chyba: 403 Forbidden (Missing Permissions)**: Ujistěte se, že bot má oprávnění „Spravovat role“ a že jeho role je nad rolemi, které potřebuje přidělit.
+- **Chyba: 50013**: Zkontrolujte, zda má bot na serveru potřebná oprávnění.
+```
+
+Tento markdown soubor obsahuje jak anglickou, tak českou verzi instrukcí pro nastavení a použití bota. Stačí ho uložit jako `README.md`.
