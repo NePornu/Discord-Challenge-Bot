@@ -1,6 +1,5 @@
 Tady je kompletní **README** soubor v markdown formátu s jednotným kódem:
 
-```markdown
 # Discord Challenge Bot
 
 ---
