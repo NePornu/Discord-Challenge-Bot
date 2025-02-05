@@ -3,8 +3,9 @@ from discord.ext import commands
 from datetime import datetime
 from collections import defaultdict
 
-TOKEN = "Bot-token"
-AUTHORIZED_ROLES = [123456789012345678, 987654321098765432]  # ID rolí, které mohou používat příkaz
+TOKEN = ("bot_token")
+
+AUTHORIZED_ROLES = [876774351670751232]  # ID rolí, které mohou používat příkaz
 
 # Nastavení intentů
 intents = discord.Intents.default()
@@ -23,15 +24,22 @@ async def on_ready():
 @bot.command()
 async def ping(ctx):
     """Zkontroluje odezvu bota."""
-    await ctx.send(f"🏓 Pong! Latence: {round(bot.latency * 1000)}ms")
+    await ctx.message.delete()  # Smazání příkazu od uživatele
+    msg = await ctx.send(f"🏓 Pong! Latence: {round(bot.latency * 1000)}ms")
+    await asyncio.sleep(5)  # Počkej 5 sekund
+    await msg.delete()  # Smazání odpovědi
 
 @bot.command()
 async def vyhodnotit_vyzvu(ctx, channel: discord.TextChannel = None, vypis: str = "true", filtr: str = "", *odmeny):
     """Vyhodnotí aktivitu uživatelů v kanále a přidělí role podle zadaných podmínek."""
     try:
+        await ctx.message.delete()  # Smazání příkazu od uživatele
+
         # Kontrola oprávnění
         if not ctx.author.guild_permissions.administrator and not any(role.id in AUTHORIZED_ROLES for role in ctx.author.roles):
-            await ctx.send("⛔ Nemáš oprávnění používat tento příkaz.")
+            msg = await ctx.send("⛔ Nemáš oprávnění používat tento příkaz.")
+            await asyncio.sleep(10)
+            await msg.delete()
             return
 
         if channel is None or channel == "-":
@@ -62,7 +70,7 @@ async def vyhodnotit_vyzvu(ctx, channel: discord.TextChannel = None, vypis: str 
 
         results = []
         activity_report = ["📋 **Aktivita uživatelů**:"]
-        
+
         for user_id, days in user_activity.items():
             active_days = len(days)
             user = ctx.guild.get_member(user_id)
@@ -87,18 +95,22 @@ async def vyhodnotit_vyzvu(ctx, channel: discord.TextChannel = None, vypis: str 
                     file.write(activity_report_text)
                 await ctx.send("📄 **Přehled aktivity je moc dlouhý, posílám jako soubor:**", file=discord.File("activity_report.txt"))
             else:
-                await ctx.send(activity_report_text)
+                await ctx.send(activity_report_text)  # **Vyhodnocení zůstane v chatu**
 
         if results:
-            await ctx.send("\n".join(results))
+            await ctx.send("\n".join(results))  # **Výsledky zůstanou v chatu**
         elif odmeny:  # Pouze zobrazit hlášku, pokud byly nějaké role specifikovány
-            await ctx.send("ℹ️ Nikdo nesplnil podmínky pro získání role.")
+            no_reward_msg = await ctx.send("ℹ️ Nikdo nesplnil podmínky pro získání role.")
+            await asyncio.sleep(10)
+            await no_reward_msg.delete()
 
         # Smazání zprávy s analýzou
         await status_message.delete()
 
     except Exception as e:
+        error_msg = await ctx.send(f"⚠️ Chyba: {e}")
         print(f"❌ Chyba při vyhodnocení výzvy: {e}")
-        await ctx.send(f"⚠️ Chyba: {e}")
+        await asyncio.sleep(10)
+        await error_msg.delete()
 
 bot.run(TOKEN)
