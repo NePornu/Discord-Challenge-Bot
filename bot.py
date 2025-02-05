@@ -3,7 +3,7 @@ from discord.ext import commands
 from datetime import datetime
 from collections import defaultdict
 
-TOKEN = ("MTIyNzI2OTU5OTk1MTU4OTUwOA.G9SX_P.uQQZh6QP_Vq3F_HUwmXngJyVS59dLQwO9z-2QI")
+TOKEN = ("Bot-token")
 
 # Nastavení intentů
 intents = discord.Intents.default()
